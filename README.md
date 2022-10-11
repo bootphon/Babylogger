@@ -1,4 +1,5 @@
 # Babylogger
+
 What is the BabyLogger?
 =======================
 
@@ -6,6 +7,8 @@ Organization
 ===========
 - src
 - doc
+
 Reference
 =========
-https://docs.babycloudlab.com/
+
+[web_site](https://docs.babycloudlab.com/).
