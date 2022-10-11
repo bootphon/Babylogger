@@ -13,4 +13,4 @@ All you need to fabricate a new device :
 Reference
 =========
 
-[web_site](https://docs.babycloudlab.com/).
+[Babylogger website](https://docs.babycloudlab.com/).
