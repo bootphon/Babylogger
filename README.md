@@ -7,8 +7,8 @@ The BabyLogger is a device used by researchers to record the child’s interacti
 Organization
 ============
 All you need to fabricate a new device :
-- src: code need for the babylogger.
-- doc: the babyloger documentation with all the plans of the Babylogger box and the electronic card.
+- src : code need for the babylogger.
+- doc : the babyloger documentation with all the plans of the Babylogger box and the electronic card.
 
 Reference
 =========
