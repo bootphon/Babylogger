@@ -8,7 +8,7 @@ Organization
 ============
 All you need to fabricate a new device :
 - src: code need for the babylogger.
-- doc: The babyloger documentation with all the plans of the Babylogger box and the electronic card.
+- doc: the babyloger documentation with all the plans of the Babylogger box and the electronic card.
 
 Reference
 =========
