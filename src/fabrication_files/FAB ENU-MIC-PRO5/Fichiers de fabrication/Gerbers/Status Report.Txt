@@ -1,0 +1,25 @@
+Output: Gerber Files
+Type  : Gerber
+From  : Variant [[No Variations]] of Project [PCB_ENU-MIC-PRO2.PrjPcb]
+   Generated File[PCB_ENU-MIC-PRO2_PCB.GTL]
+   Generated File[PCB_ENU-MIC-PRO2_PCB.GP1]
+   Generated File[PCB_ENU-MIC-PRO2_PCB.G1]
+   Generated File[PCB_ENU-MIC-PRO2_PCB.G2]
+   Generated File[PCB_ENU-MIC-PRO2_PCB.GP2]
+   Generated File[PCB_ENU-MIC-PRO2_PCB.GBL]
+   Generated File[PCB_ENU-MIC-PRO2_PCB.GTO]
+   Generated File[PCB_ENU-MIC-PRO2_PCB.GTP]
+   Generated File[PCB_ENU-MIC-PRO2_PCB.GTS]
+   Generated File[PCB_ENU-MIC-PRO2_PCB.GBS]
+   Generated File[PCB_ENU-MIC-PRO2_PCB.GBP]
+   Generated File[PCB_ENU-MIC-PRO2_PCB.GBO]
+   Generated File[PCB_ENU-MIC-PRO2_PCB.GM3]
+   Generated File[PCB_ENU-MIC-PRO2_PCB.RUL]
+   Generated File[PCB_ENU-MIC-PRO2_PCB.EXTREP]
+   Generated File[PCB_ENU-MIC-PRO2_PCB.REP]
+
+
+Files Generated   : 16
+Documents Printed : 0
+
+Finished Output Generation At 17:51:37 On 10/06/2019
