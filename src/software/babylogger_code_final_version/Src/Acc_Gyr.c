@@ -1,3 +1,7 @@
+/**********************
+* Team : Coml
+**********************/
+
 #include "Acc_Gyr.h"
 #include "LSM6DSL_motion_sensor.h"
 #include "LSM6DSL_motion_sensor_ex.h"
@@ -22,9 +26,9 @@ int16_t*			  pAccGyrBuff_Cplt 	= &AccGyrBuff[GYR_BUFF_HALF];
 * Function Name  : Acc_Gyr_Set_DRDY_XL_G
 * Description    : function used to set interrupt feature (INT1) 
 * Input          : val : 0 use INT1 for Accelerometer.
-												 1 use INT1 for Gyroscope.
-												 2 use INT1 for Accelerometer and Gyroscope.
-												 3 desable INT1 for Accelerometer and Gyroscope.
+			 1 use INT1 for Gyroscope.
+			 2 use INT1 for Accelerometer and Gyroscope.
+			 3 desable INT1 for Accelerometer and Gyroscope.
 * Return         : No returned value. 
 *******************************************************************************/
 
@@ -75,7 +79,7 @@ void Acc_Gyr_Set_DRDY_PulsedMode(void){
 	LSM6DSL_MOTION_SENSOR_Read_Register(LSM6DSL_DRDY_PULSE_CFG_G , &Reg);
 	
 	
-	Reg = 0x80; /* value to write to generate pulses of 75µs when data are ready */
+	Reg = 0x80; /* value to write to generate pulses of 75Âµs when data are ready */
 	LSM6DSL_MOTION_SENSOR_Write_Register(LSM6DSL_DRDY_PULSE_CFG_G , Reg); /* writig in register*/
 }
 
@@ -100,8 +104,8 @@ float Acc_Gyr_Acc_RAW_Process(int16_t rawdata)
 * Description    : Find origine of the interrupt "data ready".
 * Input          : No input.
 * Return         : return : 1 if the data of the accelerometer only are ready.
-														2 if the data of the gyroscope only are ready.
-														3 if the data of both of them are ready.
+			    2 if the data of the gyroscope only are ready.
+			    3 if the data of both of them are ready.
 *******************************************************************************/
 uint8_t Acc_Gyr_Is_Data_Ready(void)
 {
