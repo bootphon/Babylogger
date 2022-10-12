@@ -15,8 +15,8 @@ STC3115_BatteryData_TypeDef BatteryData;
 /* Private variables ---------------------------------------------------------*/
 
 int 						State_of_Charge;  /* The value of State of charge per mille */ 
-int 						Voltage;					/* The value of battery's voltage in mV */
-int 						Current;					/* The current used by the load circuit in mA */
+int 						Voltage;	  /* The value of battery's voltage in mV */
+int 						Current;	  /* The current used by the load circuit in mA */
 
 
 
@@ -45,12 +45,6 @@ void Bat_Monitor_AlarmEnable(void)
 
 
 
-
-
-
-
-
-
 /*******************************************************************************
 * Function Name  : Bat_Monitor_Update_Values 
 * Description    : utility function to update battery's parameters
@@ -74,8 +68,7 @@ void Bat_Monitor_Update_Values (void)
 
 /*******************************************************************************
 * Function Name  : Sensors_Init_Check_Bat 
-* Description    : utility function to know if the battery is enough charged at 
-									 startup sequence
+* Description    : utility function to know if the battery is enough charged at startup sequence
 * Input          : No input
 * Return         : return 0 if battery is enough charged, else 1. 
 *******************************************************************************/
@@ -182,8 +175,7 @@ void Sensors_Callback_STC3115(void){
 
 /*******************************************************************************
 * Function Name  : Bat_Monitor_Set_Flag_Low_Battery
-* Description    : function to be redefined where the information of 
-									 "low battery" is needed.
+* Description    : function to be redefined where the information of "low battery" is needed.
 * Input          : No input
 * Return         : No returned value. 
 *******************************************************************************/
@@ -194,8 +186,7 @@ __weak void Bat_Monitor_Set_Flag_Low_Battery(void)
 
 /*******************************************************************************
 * Function Name  : Bat_Monitor_Stop_System_Low_Battery
-* Description    : function to be redefined where is needed to turn off the 
-									 system because of low battery.
+* Description    : function to be redefined where is needed to turn off the system because of low battery.
 * Input          : No input
 * Return         : No returned value. 
 *******************************************************************************/
@@ -206,9 +197,7 @@ __weak void Bat_Monitor_Stop_System_Low_Battery(void)
 
 /*******************************************************************************
 * Function Name  : Bat_Monitor_Stop
-* Description    : function to be called before turnig of the device to save 
-									 context in the STC3115's Ram, and saving energy (no need to 
-									 acquire data when the device is off). 
+* Description    : function to be called before turnig of the device to save context in the STC3115's Ram, and saving energy (no need to acquire data when the device is off). 
 * Input          : No input
 * Return         : No returned value. 
 *******************************************************************************/
