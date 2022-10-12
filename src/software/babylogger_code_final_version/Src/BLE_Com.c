@@ -42,9 +42,7 @@ __IO uint8_t  notification_enabled = FALSE;
 __IO uint32_t connected = FALSE;
 
 
-
 volatile uint8_t request_free_fall_notify = FALSE; 
-
 
   
 /* Private function prototypes -----------------------------------------------*/
