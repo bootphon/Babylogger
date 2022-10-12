@@ -1,3 +1,7 @@
+/**********************
+* Team : Coml
+**********************/
+
 #include "Acquisition_Audio.h"
 #include "fatfs.h"
 
@@ -26,10 +30,10 @@ int16_t                      SvgrdBuff[(4*8*BuffSize)+16];
 int16_t*                     pSvgrdHalfBuff = &SvgrdBuff[0];
 int16_t*                     pSvgrdCpltBuff = &SvgrdBuff[(16*BuffSize)+8];
 
-uint8_t 										 WavHeader[44];
-uint8_t*										 pWavHeader = &WavHeader[0];
+uint8_t 		     WavHeader[44];
+uint8_t*		     pWavHeader = &WavHeader[0];
 
-uint8_t											RTC_Buff[7] = {0};
+uint8_t			     RTC_Buff[7] = {0};
 
 
 /*Process variables --------------------------------------------------*/
@@ -47,13 +51,13 @@ uint32_t hx1 												 = 0;
 uint32_t hx2 												 = 0;
 uint32_t hx3 												 = 0;
 uint32_t hx4 												 = 0;
-uint32_t hy													 = 0;
+uint32_t hy												 = 0;
 
 uint32_t cx1												 = 0;
 uint32_t cx2												 = 0;
 uint32_t cx3												 = 0;
 uint32_t cx4												 = 0;
-uint32_t cy													 = 0;
+uint32_t cy												 = 0;
 
 
 // special variable 
@@ -180,7 +184,7 @@ void DmaAudioRecCpltCallback (uint8_t Flt)
 
 		DmaRecFlt0BuffCplt = DmaRecFlt1BuffCplt = DmaRecFlt2BuffCplt = DmaRecFlt3BuffCplt = 0;
 
-	//	RTC_Get_time((uint8_t*)&SvgrdBuff[Buff_index]);
+	        //RTC_Get_time((uint8_t*)&SvgrdBuff[Buff_index]);
 		RTC_Get_time_date(&RTC_Buff[0]);
 		SvgrdBuff[Buff_index]  = ((0x0000 | (RTC_Buff[1]<<8)) | ((int16_t) RTC_Buff[0]));
 		SvgrdBuff[Buff_index+1]= ((0x0000 | (RTC_Buff[3]<<8)) | ((int16_t) RTC_Buff[2]));
@@ -218,9 +222,9 @@ void DmaAudioRecCpltCallback (uint8_t Flt)
 
 void Audio_Set_Header(uint32_t Freq, uint8_t Resolution ,uint8_t NbrChannel)
 {
-	uint32_t ByteRate = ( Freq * Resolution ) / 2;
+  uint32_t ByteRate = ( Freq * Resolution ) / 2;
 	
-	/* Write chunkID, must be 'RIFF'  ------------------------------------------*/
+  /* Write chunkID, must be 'RIFF'  ------------------------------------------*/
   WavHeader[0] = 'R';
   WavHeader[1] = 'I';
   WavHeader[2] = 'F';
@@ -300,9 +304,9 @@ void Audio_Update_Header (uint32_t CntrBuff)
   /* The sampling time: this value will be written back at the end of the 
      recording operation.  Example: 661500 Btyes = 0x000A17FC, byte[7]=0x00, byte[4]=0xFC */
   
-	uint32_t tmp = (CntrBuff * 4 * (16/8) * 4* BuffSize)+36;
+  uint32_t tmp = (CntrBuff * 4 * (16/8) * 4* BuffSize)+36;
 	
-	WavHeader[4] = (uint8_t)(tmp);
+  WavHeader[4] = (uint8_t)(tmp);
   WavHeader[5] = (uint8_t)(tmp >> 8);
   WavHeader[6] = (uint8_t)(tmp >> 16);
   WavHeader[7] = (uint8_t)(tmp >> 24);
