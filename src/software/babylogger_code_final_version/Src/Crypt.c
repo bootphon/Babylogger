@@ -12,8 +12,8 @@ CRYP_HandleTypeDef     CrypHandle;
 /* Defenition buffer ---------------------------------------------------------*/
 
 int16_t                      CryptSvgrdBuff[(4*8*BuffSize)+16];
-int16_t*              			 pCryptSvgrdHalfBuff = &CryptSvgrdBuff[0];
-int16_t*              			 pCryptSvgrdCpltBuff = &CryptSvgrdBuff[(16*BuffSize)+8];
+int16_t*              	     pCryptSvgrdHalfBuff = &CryptSvgrdBuff[0];
+int16_t*              	     pCryptSvgrdCpltBuff = &CryptSvgrdBuff[(16*BuffSize)+8];
 
 /* External variables --------------------------------------------------------*/
 
@@ -22,13 +22,13 @@ extern int16_t*              pSvgrdCpltBuff;
 
 /* Flags ---------------------------------------------------------------------*/
 
-uint8_t 									HalfSvgrdBuffCplt      = 0;
-uint8_t 									SvgrdBuffCplt          = 0;
+uint8_t 		     HalfSvgrdBuffCplt      = 0;
+uint8_t 		     SvgrdBuffCplt          = 0;
 
 /* Debug variables -----------------------------------------------------------*/
 
-uint32_t										hz = 0;
-uint32_t										cz = 0;
+uint32_t		    hz = 0;
+uint32_t		    cz = 0;
 
 /* AES parameters ------------------------------------------------------------*/
 uint8_t aAES128Key[16] = 
@@ -274,14 +274,14 @@ void CRYPT_Init (uint8_t First_Init)
 		}
 	}
 	
-	CrypHandle.Instance = AES;
+  CrypHandle.Instance = AES;
   CrypHandle.Init.DataType      = CRYP_DATATYPE_8B;
   CrypHandle.Init.pKey          = aAES128Key;
   CrypHandle.Init.KeySize       = CRYP_KEYSIZE_128B;
   CrypHandle.Init.OperatingMode = CRYP_ALGOMODE_ENCRYPT;
   CrypHandle.Init.ChainingMode  = CRYP_CHAINMODE_AES_CTR;
   CrypHandle.Init.KeyWriteFlag  = CRYP_KEY_WRITE_ENABLE; 
-	CrypHandle.Init.pInitVect			=	InitVect;
+  CrypHandle.Init.pInitVect	= InitVect;
 	
   if (HAL_CRYP_Init(&CrypHandle) != HAL_OK)
   {
@@ -293,7 +293,7 @@ void CRYPT_Init (uint8_t First_Init)
 /*******************************************************************************
 * Function Name  : DECRYPT_Init 
 * Description    : Configure AES peripheral working for Decryption.
-									 PS: Used for test only, and Must be called after CRYPT_Init
+  PS: Used for test only, and Must be called after CRYPT_Init
 * Input          : No input
 * Return         : No return value.
 *******************************************************************************/
