@@ -3,8 +3,6 @@
 #include "gatt_db.h"
 #include "I2C_com.h"
 
-
-
 /* Private typedef -----------------------------------------------------------*/
 
 CRYP_HandleTypeDef     CrypHandle;
