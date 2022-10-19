@@ -34,15 +34,11 @@ uint16_t BL_Serial_Number = 3;
 /* Extern variables ----------------------------------------------------------*/
 
 extern uint8_t Global_App_State;
-
-
 extern uint8_t		RTC_Buff[7];
 
+/* Flags -------------------------------------------------------------------*/
 
-
-/* Flags	 -------------------------------------------------------------------*/
-
-static uint8_t Stop_Sys_Rqst			= 0;
+static uint8_t Stop_Sys_Rqst = 0;
 uint8_t charge_state = 0; 
 
 /* Variables to reorgenize ---------------------------------------------------*/
@@ -123,14 +119,6 @@ int main(void)
 		
 		Sensors_Process();
 		
-		// process Meriem
-		
-		
-		//EEPROM_Read_Key(&key_read[0],0);
-		
-		// fin process Meriem
-		
-		
 
   }
   /* USER CODE END 3 */
@@ -138,7 +126,7 @@ int main(void)
 
 static void Common_Init_System (void)
 {
-	// system init------------------------------------ 
+  // system init------------------------------------ 
 	
   HAL_Init();
   SystemClock_Config();
@@ -164,7 +152,7 @@ static void Common_Init_System (void)
 	//script_test_led_func();
 	
 	// Init des capteurs -----------------------------
-	//pour décider si les seuils de bat et temp autorise la mise en marche
+	//pour dÃ©cider si les seuils de bat et temp autorise la mise en marche
 	
 	Sensors_Init();
 	Sensors_Start();
