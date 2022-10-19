@@ -45,13 +45,13 @@ static void SDMMC1_SD_Init_Struct(void);
 uint8_t	BSP_PlatformIsDetected(void) {
 	
 	
-		// initialisation of PA12 uSD detect out of the msp_init 
-		// because the function of initialisation is called only if the uSD is connected
+     // initialisation of PA12 uSD detect out of the msp_init 
+    // because the function of initialisation is called only if the uSD is connected
 	
-		GPIO_InitTypeDef GPIO_InitStruct = {0};
-		__HAL_RCC_GPIOA_CLK_ENABLE();	
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+    __HAL_RCC_GPIOA_CLK_ENABLE();	
 	
-		GPIO_InitStruct.Pin = GPIO_PIN_12;
+    GPIO_InitStruct.Pin = GPIO_PIN_12;
     GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
@@ -95,8 +95,6 @@ static void SDMMC1_SD_Init_Struct(void)
 
 }
 
-
-// end modification 
 
 
 
@@ -421,7 +419,7 @@ void HAL_SD_MspInit(SD_HandleTypeDef* hsd)
     GPIO_InitStruct.Alternate = GPIO_AF12_SDMMC1;
     HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 		
-		GPIO_InitStruct.Pin = GPIO_PIN_10;
+    GPIO_InitStruct.Pin = GPIO_PIN_10;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
@@ -483,19 +481,19 @@ void HAL_SD_MspInit(SD_HandleTypeDef* hsd)
     {
       //Error_Handler();
     }
-		__HAL_LINKDMA(hsd,hdmatx,hdma_sdmmc1_tx);
+     __HAL_LINKDMA(hsd,hdmatx,hdma_sdmmc1_tx);
    
 
     /* SDMMC1 interrupt Init */
     HAL_NVIC_SetPriority(SDMMC1_IRQn, 7, 0);
     HAL_NVIC_EnableIRQ(SDMMC1_IRQn);
-  /* USER CODE BEGIN SDMMC1_MspInit 1 */
- // HAL_NVIC_SetPriority(DMA2_Channel4_IRQn, 1, 0);
-  //HAL_NVIC_EnableIRQ(DMA2_Channel4_IRQn);
-  /* DMA2_Channel5_IRQn interrupt configuration */
-  HAL_NVIC_SetPriority(DMA2_Channel5_IRQn, 7, 0);
-  HAL_NVIC_EnableIRQ(DMA2_Channel5_IRQn);
-  /* USER CODE END SDMMC1_MspInit 1 */
+    /* USER CODE BEGIN SDMMC1_MspInit 1 */
+    // HAL_NVIC_SetPriority(DMA2_Channel4_IRQn, 1, 0);
+    //HAL_NVIC_EnableIRQ(DMA2_Channel4_IRQn);
+    /* DMA2_Channel5_IRQn interrupt configuration */
+    HAL_NVIC_SetPriority(DMA2_Channel5_IRQn, 7, 0);
+    HAL_NVIC_EnableIRQ(DMA2_Channel5_IRQn);
+    /* USER CODE END SDMMC1_MspInit 1 */
   }
 
 }
@@ -524,9 +522,7 @@ void HAL_SD_MspDeInit(SD_HandleTypeDef* hsd)
     PC12     ------> SDMMC1_CK
     PD2     ------> SDMMC1_CMD 
     */
-    HAL_GPIO_DeInit(GPIOC, GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11 
-                          |GPIO_PIN_12);
-
+    HAL_GPIO_DeInit(GPIOC, GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11 |GPIO_PIN_12);
     HAL_GPIO_DeInit(GPIOD, GPIO_PIN_2);
 
     /* SDMMC1 DMA DeInit */
