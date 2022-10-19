@@ -102,9 +102,7 @@ uint8_t Sensors_Init_Check_Bat(void)
 				else return 4;
 			}
 		}			
-	}
-	
-	
+	}	
 
 }
 
