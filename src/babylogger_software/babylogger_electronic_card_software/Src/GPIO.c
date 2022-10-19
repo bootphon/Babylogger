@@ -3,12 +3,14 @@
 #include "sensor_acquisition.h"
 #include "fatfs.h"
 
+/* private variables */
+
 uint16_t variables_test_chargIn = 0;
 extern uint8_t Global_App_State;
 
-
 uint8_t Wifi_reset_rqst = 0;
 uint8_t Wifi_Format_Sd_rqst = 0;
+
 
 /**
   * @brief  Configuration des interruptions externes
@@ -56,6 +58,12 @@ void GPIO_Monitor_Bat_INT_Init(void)
 	
 }
 
+/*******************************************************************************
+* Function Name  : 
+* Description    : 
+* Input          : 
+* Return         : 
+*******************************************************************************/
 void GPIO_BLE_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStruct = {0};
