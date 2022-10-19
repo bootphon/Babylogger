@@ -5,9 +5,7 @@
 #include "Acquisition_Audio.h"
 #include "fatfs.h"
 
-/* Private functions ---------------------------------------------------------*/
-
-
+/* Private functions -----------------------------------------------------*/
 
 /*Declaration variables --------------------------------------------------*/
 int32_t                      RecBuff0[2*BuffSize];
@@ -64,10 +62,6 @@ uint32_t cy												 = 0;
 uint32_t 										Buff_index; 
 
 
-
-
-
-
 void Audio_Init(void)
 {
 	DFSDM_Init();
@@ -79,7 +73,6 @@ void Audio_Stop_Record(void)
 {
 	DFSDM_Stop_Record();
 }
-
 
 
 void DmaAudioRecHalfCallback (uint8_t Flt)
@@ -178,9 +171,7 @@ void DmaAudioRecCpltCallback (uint8_t Flt)
 	
 	if ( (DmaRecFlt0BuffCplt == 1) && (DmaRecFlt1BuffCplt == 1)
 		&& (DmaRecFlt2BuffCplt == 1) && (DmaRecFlt3BuffCplt == 1))
-	{
-		
-		
+	{		
 
 		DmaRecFlt0BuffCplt = DmaRecFlt1BuffCplt = DmaRecFlt2BuffCplt = DmaRecFlt3BuffCplt = 0;
 
