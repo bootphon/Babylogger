@@ -3,7 +3,12 @@
 #include "GPIO.h" 
 #include "sensor_acquisition.h" 
 
-
+/*******************************************************************************
+* Function Name  : 
+* Description    : 
+* Input          : 
+* Return         : 
+*******************************************************************************/
 uint8_t Global_App_State = Global_App_first_Init; 
 
 static void PWR_Reset(void);
@@ -17,14 +22,14 @@ void PWR_Init(void)
 
 // cette fonction permet un reset du system en cas d'erreur
 // fonctionne uniquement dans le mode acquisition
-// elle utilise le signal PG du chargeur de batterie (état haut = chargeur débranché)
+// elle utilise le signal PG du chargeur de batterie (Ã©tat haut = chargeur dÃ©branchÃ©)
 void PWR_Reset_System(void)
 {
 	// Disable all used wakeup sources: WKUP pin  
 	HAL_PWR_DisableWakeUpPin(PWR_WAKEUP_PIN2);
 	// Clear wake up Flag
 	__HAL_PWR_CLEAR_FLAG(PWR_FLAG_WUF2);
-	// Enable wakeup pin WKUP2 (et charge-in: fonctionnalitée à venir)	
+	// Enable wakeup pin WKUP2 (et charge-in: fonctionnalitÃ©e Ã  venir)	
 	HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN2_HIGH);
 	//Set RTC back-up register RTC_BKP31R to indicate later on that system has entered shutdown mode
 	 WRITE_REG( RTC->BKP31R, 0x1 );
@@ -53,7 +58,7 @@ void PWR_Go_To_Shutdown_Mode(void)
 	__HAL_PWR_CLEAR_FLAG(PWR_FLAG_WUF2);
 	
 		
-	// Enable wakeup pin WKUP2 (et charge-in: fonctionnalitée à venir)	
+	// Enable wakeup pin WKUP2 (et charge-in: fonctionnalitÃ©e Ã  venir)	
 	HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN1_HIGH);
 	// ajouter ici ou mettre un ou !!!
 	HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN2_LOW);
