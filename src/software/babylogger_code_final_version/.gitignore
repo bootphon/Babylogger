@@ -1,0 +1,5 @@
+*.o
+*.d
+*.crf
+*.hex
+MDK-ARM/Audio4Mic_SD_proto/*
