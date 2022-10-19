@@ -1,8 +1,6 @@
 #include "Bat_Monitor.h"
 #include "stc3115_Driver.h"
 
-
-
 /* Private typedef -----------------------------------------------------------*/
 
 STC3115_ConfigData_TypeDef ConfigData;
@@ -10,18 +8,11 @@ STC3115_BatteryData_TypeDef BatteryData;
 
 /* Private prototypes ---------------------------------------------------------*/
 
-
-
 /* Private variables ---------------------------------------------------------*/
 
-int 						State_of_Charge;  /* The value of State of charge per mille */ 
-int 						Voltage;	  /* The value of battery's voltage in mV */
-int 						Current;	  /* The current used by the load circuit in mA */
-
-
-
-
-
+int 		State_of_Charge;  /* The value of State of charge per mille */ 
+int 		Voltage;	  /* The value of battery's voltage in mV */
+int 		Current;	  /* The current used by the load circuit in mA */
 
 
 
@@ -41,7 +32,6 @@ void Bat_Monitor_AlarmEnable(void)
 {
 	STC3115_AlarmSet();
 }
-
 
 
 
@@ -151,9 +141,6 @@ int Sensors_Get_State_of_Charge_Progress(void)
 {
 	return State_of_Charge;
 }
-
-
-
 
 
 /*******************************************************************************
