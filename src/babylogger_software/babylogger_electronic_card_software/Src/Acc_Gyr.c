@@ -1,5 +1,6 @@
 /**********************
 * Team : Coml
+* Year : 2020-2021
 **********************/
 
 #include "Acc_Gyr.h"
@@ -17,8 +18,6 @@ int16_t 				AccGyrBuff[Size_Acc_Gyr_Buff];
 
 int16_t*			  pAccGyrBuff_Half 	= &AccGyrBuff[0];
 int16_t*			  pAccGyrBuff_Cplt 	= &AccGyrBuff[GYR_BUFF_HALF];
-
-
 
 /*******************************************************************************
 * Function Name  : Acc_Gyr_Set_DRDY_XL_G
@@ -61,9 +60,6 @@ void Acc_Gyr_Set_DRDY_XL_G(uint8_t val){
 		break; 
 	}
 }
-
-
-
 /*******************************************************************************
 * Function Name  : Acc_Gyr_Set_DRDY_PulsedMode
 * Description    : Setting the interrupt's signal as a pulse.
@@ -188,11 +184,9 @@ void Acc_Gyr_Init(void)
 {
 		
 	LSM6DSL_MOTION_SENSOR_Init(MOTION_ACCELERO); /* Initialize accelerometer */
-	LSM6DSL_MOTION_SENSOR_Init(MOTION_GYRO); /* Initialize gyroscope */
-	
+	LSM6DSL_MOTION_SENSOR_Init(MOTION_GYRO); /* Initialize gyroscope */	
 	LSM6DSL_MOTION_SENSOR_SetOutputDataRate( MOTION_ACCELERO , 52); /* Set accelerometer's output data rate */
-	LSM6DSL_MOTION_SENSOR_SetOutputDataRate( MOTION_GYRO, 52); 	/* Set gyroscope's output data rate */
-			
+	LSM6DSL_MOTION_SENSOR_SetOutputDataRate( MOTION_GYRO, 52); 	/* Set gyroscope's output data rate */		
 	Acc_Gyr_Set_DRDY_PulsedMode(); /* Set interrupt in pulsed mode */
 	
 	/* Reset interupt register */
