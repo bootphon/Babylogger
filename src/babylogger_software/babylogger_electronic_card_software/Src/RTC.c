@@ -1,3 +1,8 @@
+/**********************
+* Team : Coml
+* Year : 2020-2021
+**********************/
+
 #include "RTC.h"
 #include "string.h"
 #include "stdio.h"
@@ -13,12 +18,12 @@ RTC_HandleTypeDef RtcHandle;
 
 void BLE_Time_Recieved(uint8_t* pData)
 {
-	RTC_Set_time(pData);
+  RTC_Set_time(pData);
 }
 
 void BLE_Date_Recieved(uint8_t* pData)
 {
-	RTC_Set_date(pData);
+  RTC_Set_date(pData);
 }
 
 void RTC_Set_time(uint8_t* Time_Buff)
@@ -37,11 +42,11 @@ void RTC_Set_time(uint8_t* Time_Buff)
     /* Initialization Error */
     //Error_Handler();
   }
-	HAL_RTCEx_BKUPWrite(&RtcHandle, RTC_BKP_DR1, 0x32F2);
+    HAL_RTCEx_BKUPWrite(&RtcHandle, RTC_BKP_DR1, 0x32F2);
 }
 void RTC_Set_date(uint8_t* Date_Buff)
 {
-  RTC_DateTypeDef sdatestructure;
+    RTC_DateTypeDef sdatestructure;
 	
   /*##-1- Configure the Date #################################################*/
 
@@ -55,13 +60,13 @@ void RTC_Set_date(uint8_t* Date_Buff)
     /* Initialization Error */
    // Error_Handler();
   }
-	//HAL_RTCEx_BKUPWrite(&RtcHandle, RTC_BKP_DR1, 0x32F2);
+   //HAL_RTCEx_BKUPWrite(&RtcHandle, RTC_BKP_DR1, 0x32F2);
 }
 
 void RTC_Get_time_date (uint8_t * buff)
 {
 	
-	RTC_DateTypeDef sdatestructureget;
+  RTC_DateTypeDef sdatestructureget;
   RTC_TimeTypeDef stimestructureget;
 
   /* Get the RTC current Time */
@@ -69,13 +74,13 @@ void RTC_Get_time_date (uint8_t * buff)
   /* Get the RTC current Date */
   HAL_RTC_GetDate(&RtcHandle, &sdatestructureget, RTC_FORMAT_BIN);
 	
-	buff[0] = stimestructureget.Hours;
-	buff[1] = stimestructureget.Minutes;
-	buff[2] = stimestructureget.Seconds;
-	buff[3] = stimestructureget.SubSeconds;
-	buff[4] = sdatestructureget.Year;
-	buff[5] = sdatestructureget.Month;
-	buff[6] = sdatestructureget.Date;
+  buff[0] = stimestructureget.Hours;
+  buff[1] = stimestructureget.Minutes;
+  buff[2] = stimestructureget.Seconds;
+  buff[3] = stimestructureget.SubSeconds;
+  buff[4] = sdatestructureget.Year;
+  buff[5] = sdatestructureget.Month;
+  buff[6] = sdatestructureget.Date;
 	
 }
 
@@ -83,24 +88,21 @@ void RTC_Get_time_date (uint8_t * buff)
 
 void RTC_Set_Time_str(uint8_t* time_str)
 {
-	RTC_TimeTypeDef stimestructure;
-	char Tmp[2]={0};
- 
-	
-	Tmp[0] = time_str[0];
-	Tmp[1] = time_str[1];
+  RTC_TimeTypeDef stimestructure;
+  char Tmp[2]={0};
+ 	
+  Tmp[0] = time_str[0];
+  Tmp[1] = time_str[1];
 
-	stimestructure.Hours    = atoi(Tmp); 	
-	Tmp[0] = time_str[3];
-	Tmp[1] = time_str[4];
+  stimestructure.Hours    = atoi(Tmp); 	
+  Tmp[0] = time_str[3];
+  Tmp[1] = time_str[4];
 
-	stimestructure.Minutes  = atoi(Tmp);
-	Tmp[0] = time_str[6];
-	Tmp[1] = time_str[7];
+  stimestructure.Minutes  = atoi(Tmp);
+  Tmp[0] = time_str[6];
+  Tmp[1] = time_str[7];
 
-	stimestructure.Seconds  = atoi(Tmp);
-	
-  
+  stimestructure.Seconds  = atoi(Tmp);
   stimestructure.TimeFormat = RTC_HOURFORMAT_24;
   stimestructure.DayLightSaving = RTC_DAYLIGHTSAVING_NONE ;
   stimestructure.StoreOperation = RTC_STOREOPERATION_RESET;
