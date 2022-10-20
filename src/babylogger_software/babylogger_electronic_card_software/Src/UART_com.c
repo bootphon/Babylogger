@@ -1,7 +1,7 @@
+
 #include "UART_com.h"
 #include "string.h"
 #include "stdio.h"
-//#include "stdlib.h"
 #include "RTC.h"
 #include "PWR.h"
 
@@ -45,7 +45,7 @@ void UART_Com_Wifi_Process (void)
 			
 			// add code to turn on wifi /* Turn on wifi chip */
 			
-			UART_Com_Wifi_Receve_Report(Wait_Ready); /* Prépare uart to receve the status "Ready" */
+			UART_Com_Wifi_Receve_Report(Wait_Ready); /* PrÃ©pare uart to receve the status "Ready" */
 			Start_Uart_Com = 1;  /* Increment to prevent recursve entrance in this state */ 
 		}
 		
@@ -120,7 +120,7 @@ void UART_Com_Wifi_Process (void)
 				
 				case Wait_Date : /* Wait for the current date */ 
 					
-					//ajouter une fonction pour régler le calendrier /* Set the RTC date */ 
+					//ajouter une fonction pour rÃ©gler le calendrier /* Set the RTC date */ 
 					UART_Com_Wifi_Send_Cmd (Init_Ftp);	/* Send a request to initialize the FTP */
 					
 				break;
