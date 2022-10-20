@@ -164,9 +164,7 @@ void user_notify(void * pData)
 				{
 					evt_gatt_attr_modified_IDB04A1 *prs = (void*)blue_evt->data;
 					Write_Characteristic_CB( prs->conn_handle, prs->attr_handle, prs->data_length,  prs->att_data);
-				}
-				
-				
+				}				
 				
 			break;
       }
