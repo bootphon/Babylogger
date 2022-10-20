@@ -1,8 +1,11 @@
+/**********************
+* Team : Coml
+* Year : 2020-2021
+**********************/
+
 #include "Temp_Hum.h"
 #include "HTS221_env_sensor.h"
 #include "HTS221_env_sensor_ex.h"
-
-
 
 /* Private prototypes ---------------------------------------------------------*/
 
