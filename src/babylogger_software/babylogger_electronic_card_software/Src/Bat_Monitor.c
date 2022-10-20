@@ -1,3 +1,7 @@
+/**********************
+* Team : Coml
+* Year : 2020-2021
+**********************/
 #include "Bat_Monitor.h"
 #include "stc3115_Driver.h"
 
@@ -10,11 +14,9 @@ STC3115_BatteryData_TypeDef BatteryData;
 
 /* Private variables ---------------------------------------------------------*/
 
-int 		State_of_Charge;  /* The value of State of charge per mille */ 
-int 		Voltage;	  /* The value of battery's voltage in mV */
-int 		Current;	  /* The current used by the load circuit in mA */
-
-
+int State_of_Charge;  /* The value of State of charge per mille */ 
+int Voltage;	  /* The value of battery's voltage in mV */
+int Current;	  /* The current used by the load circuit in mA */
 
 void Bat_Monitor_AlarmSetSOCThreshold (int Soc_Value)
 {
@@ -32,7 +34,6 @@ void Bat_Monitor_AlarmEnable(void)
 {
 	STC3115_AlarmSet();
 }
-
 
 
 /*******************************************************************************
@@ -106,9 +107,6 @@ uint8_t Sensors_Init_Check_Bat(void)
 
 }
 
-
-
-
 /*******************************************************************************
 * Function Name  : Sensors_Bat_Is_Full 
 * Description    : utility function to know if the battery is full.
@@ -155,7 +153,7 @@ void Sensors_Callback_STC3115(void){
 
 	Bat_Monitor_Set_Flag_Low_Battery(); /* Notifie that the threshold has been reached */ 
 	
-	HAL_NVIC_EnableIRQ(EXTI9_5_IRQn);	/* Enable interrupt for EXTI lines 5 to 9 */
+	HAL_NVIC_EnableIRQ(EXTI9_5_IRQn); /* Enable interrupt for EXTI lines 5 to 9 */
 }
 
 /*******************************************************************************
