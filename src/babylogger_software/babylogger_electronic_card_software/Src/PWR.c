@@ -34,7 +34,7 @@ void PWR_Reset_System(void)
 	//Set RTC back-up register RTC_BKP31R to indicate later on that system has entered shutdown mode
 	 WRITE_REG( RTC->BKP31R, 0x1 );
 	// Enter shutdown mode   
-  HAL_PWREx_EnterSHUTDOWNMode();
+  	HAL_PWREx_EnterSHUTDOWNMode();
 }
 
 
@@ -49,8 +49,8 @@ void PWR_Go_To_Shutdown_Mode(void)
 {
 	    
 	// Disable all used wakeup sources: WKUP pin (don't forget to add new wakeup pin charge-in)   
-  HAL_PWR_DisableWakeUpPin(PWR_WAKEUP_PIN1);
-  // ajouter ici ou mettre un ou !!!
+  	HAL_PWR_DisableWakeUpPin(PWR_WAKEUP_PIN1);
+  	// ajouter ici ou mettre un ou !!!
 	HAL_PWR_DisableWakeUpPin(PWR_WAKEUP_PIN2);
 	// Clear wake up Flag
 	__HAL_PWR_CLEAR_FLAG(PWR_FLAG_WUF1);
@@ -65,7 +65,7 @@ void PWR_Go_To_Shutdown_Mode(void)
 	//Set RTC back-up register RTC_BKP31R to indicate later on that system has entered shutdown mode
 	 WRITE_REG( RTC->BKP31R, 0x1 );
 	// Enter shutdown mode   
-  HAL_PWREx_EnterSHUTDOWNMode();
+  	HAL_PWREx_EnterSHUTDOWNMode();
 }
 
 void PWR_Check_Previous_Mode(void)
@@ -98,7 +98,7 @@ void PWR_Check_Previous_Mode(void)
 
 		}
 
-	/* Check and Clear the Wakeup flag */
+    /* Check and Clear the Wakeup flag */
 		if (__HAL_PWR_GET_FLAG(PWR_FLAG_WUF1) != RESET)
 		{
 			__HAL_PWR_CLEAR_FLAG(PWR_FLAG_WUF1);
