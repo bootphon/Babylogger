@@ -1,3 +1,8 @@
+
+/**********************
+* Team : Coml
+* Year : 2020-2021
+**********************/
 #include "IHM.h"
 
 // internal variables
@@ -6,15 +11,15 @@ uint32_t PB_Time_Press 	 = 0xFFFFFFFF;
 uint32_t PB_Time_Release = 0x00000000;
 uint8_t  PB_Wait_Release = 0x00;
 
-uint8_t	 PB_Constructor_Press_Counter = 0;
+uint8_t	 PB_Constructor_Press_Counter    = 0;
 uint32_t PB_Constructor_Time_First_press = 0;
 // External Variables
 
 extern uint8_t Global_App_State;
 
 // variable de debug
-uint32_t var_test_exti_reset 	=	0;
-uint32_t var_test_exti_set 	=	0;
+uint32_t var_test_exti_reset  =	0;
+uint32_t var_test_exti_set    =	0;
 uint32_t var_test_exti_sysoff =	0;
 // fonctions defenition
 
@@ -24,55 +29,50 @@ uint32_t uhPrescalerValue = 0;
 	
 void script_test_led_func(void)
 {
-	IHM_LED_Start(LED_Continious_Mode,LED1);
-	HAL_Delay(2000);
+  IHM_LED_Start(LED_Continious_Mode,LED1);
+  HAL_Delay(2000);
 	
-	IHM_LED_Start(LED_Continious_Mode,LED2);
-	HAL_Delay(2000);
+  IHM_LED_Start(LED_Continious_Mode,LED2);
+  HAL_Delay(2000);
 	
-	IHM_LED_Stop(LED1);
-	HAL_Delay(2000);
+  IHM_LED_Stop(LED1);
+  HAL_Delay(2000);
 	
-	IHM_LED_Stop(LED2);
-	HAL_Delay(2000);
+  IHM_LED_Stop(LED2);
+  HAL_Delay(2000);
 	
-	IHM_LED_Start(LED_PWM_Mode,LED1);
-	HAL_Delay(2000);
+  IHM_LED_Start(LED_PWM_Mode,LED1);
+  HAL_Delay(2000);
 	
-	IHM_LED_Start(LED_PWM_Mode,LED2);
-	HAL_Delay(2000);
+  IHM_LED_Start(LED_PWM_Mode,LED2);
+  HAL_Delay(2000);
 	
+  IHM_LED_Stop(LED1);
+  HAL_Delay(2000);
 	
-	IHM_LED_Stop(LED1);
-	HAL_Delay(2000);
+  IHM_LED_Stop(LED2);
+  HAL_Delay(2000);
 	
-	IHM_LED_Stop(LED2);
-	HAL_Delay(2000);
+  IHM_LED_Start(LED_Continious_Mode,LED1_2);
+  HAL_Delay(2000);
 	
-	IHM_LED_Start(LED_Continious_Mode,LED1_2);
-	HAL_Delay(2000);
+  IHM_LED_Stop(LED1_2);
+  HAL_Delay(2000);
 	
-	IHM_LED_Stop(LED1_2);
-	HAL_Delay(2000);
+  IHM_LED_Start(LED_PWM_Mode,LED1_2);
+  HAL_Delay(2000);
 	
+  IHM_LED_Stop(LED1_2);
 	
-	IHM_LED_Start(LED_PWM_Mode,LED1_2);
-	HAL_Delay(2000);
-	
-	IHM_LED_Stop(LED1_2);
-	
-	while(1);
-	
-	
-	
+  while(1);	
 }
 
 typedef enum {
 	LED_Non_Init = 0,
 	LED_OutputPP_Init = 1,
 	LED_AfPWM_Init = 2
-} LED_INIT_STATE_TypeDef;
-
+} 
+LED_INIT_STATE_TypeDef;
 LED_INIT_STATE_TypeDef 	LED1_Init_State = LED_Non_Init;
 LED_INIT_STATE_TypeDef	LED2_Init_State = LED_Non_Init;
 /*
@@ -82,212 +82,25 @@ LED_INIT_STATE_TypeDef	LED2_Init_State = LED_Non_Init;
 	0   --> open audio file
 	1   --> allocate audio file space
 	2   --> write first half audio 
-  3   --> write seconde half audio 
-  4   --> close audio file 
+  	3   --> write seconde half audio 
+  	4   --> close audio file 
 	5   --> open acti file
 	6   --> allocate acti file space
-  7   -->	write first half acti
+  	7   -->	write first half acti
 	8   --> write seconde half acti
 	9   --> close acti file 
-	10	--> Bus fault 
-	11	--> Hard fault 
-	12	--> Fatfs err handel
-	13 	--> MemManagement 
+	10  --> Bus fault 
+	11  --> Hard fault 
+	12  --> Fatfs err handel
+	13  --> MemManagement 
 */
-/*
-void IHM_Debug_Led(uint8_t Err_Origine)
-{
-	
-	while(1)
-	{
-	IHM_LED_Stop(LED1_2);
-	HAL_Delay(2000);
-	
-	
-	switch(Err_Origine)
-	{
-		case 0: // open audio
-			IHM_LED_Start(LED_Continious_Mode , LED2) ;
-			HAL_Delay(500);
-		break;
-		
-		case 1:  // allocate audio 
-			IHM_LED_Start(LED_Continious_Mode , LED2) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED2);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED2) ;
-			HAL_Delay(500);
-		break;
-		
-		case 2: // Write first half
-			IHM_LED_Start(LED_Continious_Mode , LED2) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED2);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED2) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED2);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED2) ;
-			HAL_Delay(500);
-		break;
-		
-		case 3: //write seconde half  
-			IHM_LED_Start(LED_Continious_Mode , LED2) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED2);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED2) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED2);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED2) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED2);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED2) ;
-			HAL_Delay(500);
-		break;
-		
-		case 4: // close audio file
-			IHM_LED_Start(LED_Continious_Mode , LED2) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED2);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED2) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED2);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED2) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED2);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED2) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED2);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED2) ;
-			HAL_Delay(500);
-		break;
-		
-		case 5: // open acti file 
-			IHM_LED_Start(LED_Continious_Mode , LED1) ;
-			HAL_Delay(500);
-		break;
-		
-		case 6: // allocte mem for acti file
-			IHM_LED_Start(LED_Continious_Mode , LED1) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED1);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED1) ;
-			HAL_Delay(500);
-		break;
-		
-		case 7: // write first half acti file
-			IHM_LED_Start(LED_Continious_Mode , LED1) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED1);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED1) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED1);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED1) ;
-			HAL_Delay(500);
-			
-		break;
-		
-		case 8: // write seconde half acti file 
-			IHM_LED_Start(LED_Continious_Mode , LED1) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED1);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED1) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED1);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED1) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED1);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED1) ;
-			HAL_Delay(500);
-		break;
-		
-		case 9: // close acti file 
-			IHM_LED_Start(LED_Continious_Mode , LED1) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED1);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED1) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED1);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED1) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED1);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED1) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED1);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED1) ;
-			HAL_Delay(500);
-		break;
-		
-		case 10: // bus fault
-			IHM_LED_Start(LED_Continious_Mode , LED1_2) ;
-			HAL_Delay(500);
-		break;
-		
-		case 11: // Hard fault 
-			IHM_LED_Start(LED_Continious_Mode , LED1_2) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED1_2);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED1_2) ;
-			HAL_Delay(500);
-		break;
-		
-		case 12: // fatfs err handler  
-			IHM_LED_Start(LED_Continious_Mode , LED1) ;
-			while(1);
-		break;
-		
-		case 13:
-			IHM_LED_Start(LED_Continious_Mode , LED1_2) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED1_2);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED1_2) ;
-			HAL_Delay(500);
-			IHM_LED_Stop(LED1_2);
-			HAL_Delay(500);
-			IHM_LED_Start(LED_Continious_Mode , LED1_2) ;
-			HAL_Delay(500);
-		break; 
-		
-		default:
-			
-		break;
-		
-	}
-	
-	
-	
-
-
-	}
-}*/
 
 void IHM_LED_Stop(uint8_t LEDx)
 {
 	
-	switch(LEDx)
+  switch(LEDx)
 	{
-		case LED1:
+	  	case LED1:
 			if (LED1_Init_State == LED_AfPWM_Init)
 			{
 				IHM_LED_Stop_Blink(LED1);
@@ -457,9 +270,9 @@ void IHM_LED_Start(uint8_t Mode, uint8_t LEDx)
 /**
 * @brief Activation du Timer en mode PWM
 * @param val : 
-						0 : la LED1 clignote rouge
-						1 : la LED2 clignote vert 
-						2 : les 2 LED clignotent
+	   0 : la LED1 clignote rouge
+	   1 : la LED2 clignote vert 
+	   2 : les 2 LED clignotent
 * @retval None
 */
 void IHM_LED_Start_Blink(uint8_t val){
@@ -480,9 +293,9 @@ void IHM_LED_Start_Blink(uint8_t val){
 /**
 * @brief Activation du Timer en mode PWM
 * @param val : 
-						0 : LED1 stop
-						1 : LED2 stop
-						2 : les 2 LED stop
+	 0 : LED1 stop
+	 1 : LED2 stop
+	 2 : les 2 LED stop
 * @retval None
 */
 void IHM_LED_Stop_Blink(uint8_t val){
@@ -514,7 +327,7 @@ void IHM_LED_PWM_Init(uint8_t LEDx)
 		
 	if (LEDx == LED1)
 	{	
-			GPIO_InitTypeDef GPIO_InitPWM;
+		GPIO_InitTypeDef GPIO_InitPWM;
 		__HAL_RCC_GPIOA_CLK_ENABLE();//PA10 -> TIM1_CH3 
 	
 		GPIO_InitPWM.Speed = GPIO_SPEED_LOW;
@@ -524,9 +337,6 @@ void IHM_LED_PWM_Init(uint8_t LEDx)
 		GPIO_InitPWM.Alternate= GPIO_AF1_TIM1;
 		GPIO_InitPWM.Pin = LED_1_Pin;
 		HAL_GPIO_Init(LED_1_2_Port, &GPIO_InitPWM); 
-	
-	
-	
 	
 		TimerLED.Instance=TIM1; //LED1/LED2 -> PA10/PA11 -> TIM1CH3/TIM1CH4
 		TimerLED.Init.ClockDivision=TIM_CLOCKDIVISION_DIV1;
@@ -598,8 +408,6 @@ void IHM_LED_PWM_Init(uint8_t LEDx)
 		GPIO_InitPWM.Pin = LED_2_Pin;
 		HAL_GPIO_Init(LED_1_2_Port, &GPIO_InitPWM);
 	
-	
-	
 		TimerLED.Instance=TIM1; //LED1/LED2 -> PA10/PA11 -> TIM1CH3/TIM1CH4
 		TimerLED.Init.ClockDivision=TIM_CLOCKDIVISION_DIV1;
 		TimerLED.Init.CounterMode=TIM_COUNTERMODE_UP;
@@ -639,15 +447,10 @@ void IHM_LED_DeInit(void){
 * @retval None
 */
 void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef *htim){
-	
-
-	
+		
 	__HAL_RCC_TIM1_CLK_ENABLE();
 	
-
 }
-
-
 
 void IHM_LED_Continious_Init(uint8_t LEDx)
 {
@@ -682,7 +485,7 @@ void IHM_LED_Continious_Init(uint8_t LEDx)
 	
 	if (LEDx == LED1_2)
 	{
-  /* Configure the GPIO_LED pin */
+                /* Configure the GPIO_LED pin */
 		GPIO_InitStruct.Pin   = LED_1_Pin;
 		GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
 		GPIO_InitStruct.Pull  = GPIO_NOPULL;
@@ -699,9 +502,6 @@ void IHM_LED_Continious_Init(uint8_t LEDx)
 		LED2_Init_State = LED_OutputPP_Init;
 	}
 }
-
-
-
 
 
 void IHM_LED_On(uint8_t LEDx)
@@ -746,18 +546,16 @@ void IHM_LED_Off(uint8_t LEDx)
 
 
 
-
-
 void IHM_PB_Init(void)
 {
 	GPIO_InitTypeDef GPIO_InitStruct = {0};
 	
-	  // Enable the GPIOC Clock 
-  __HAL_RCC_GPIOC_CLK_ENABLE();
+	// Enable the GPIOC Clock 
+        __HAL_RCC_GPIOC_CLK_ENABLE();
 	
-	  // Configure PB pin as exti interrupt on rising and falling  
+	// Configure PB pin as exti interrupt on rising and falling  
 	GPIO_InitStruct.Pin    = PB_Pin;
-  GPIO_InitStruct.Mode   = GPIO_MODE_IT_RISING_FALLING;
+        GPIO_InitStruct.Mode   = GPIO_MODE_IT_RISING_FALLING;
 	GPIO_InitStruct.Pull   = GPIO_NOPULL;
 	GPIO_InitStruct.Speed  = GPIO_SPEED_FREQ_HIGH;
 	HAL_GPIO_Init(PB_Port, &GPIO_InitStruct);  
@@ -768,9 +566,9 @@ void IHM_PB_Init(void)
 	while(IHM_PB_GetState() == GPIO_PIN_SET){} 
 		
 	// Enable exti interrupt with the lowest priority (TBD with the other part of the project)
-		// other exti line for the button on final card. (Line 0)
-    HAL_NVIC_SetPriority(PB_Exti_IRQn, 0x0F, 0);
-    HAL_NVIC_EnableIRQ(PB_Exti_IRQn);
+	// other exti line for the button on final card. (Line 0)
+        HAL_NVIC_SetPriority(PB_Exti_IRQn, 0x0F, 0);
+        HAL_NVIC_EnableIRQ(PB_Exti_IRQn);
 	// in case of using other exti line between 10 and 15 the priority have to be reevaluated
 } 
 
@@ -782,9 +580,8 @@ uint32_t IHM_PB_GetState(void)
 
 void IHM_PB_Callback (void)
 {
-		// sur carte nucléo appuie PB = GND, sur notre carte appuie PB = 3V3 ==> logique inverse
+   // sur carte nucléo appuie PB = GND, sur notre carte appuie PB = 3V3 ==> logique inverse
    // NORMALEMENT OK!!!! while(BSP_PB_GetState(BUTTON_USER) == GPIO_PIN_RESET){}
-
 		
 	if (Global_App_State == Global_App_Charge_Mode)
 	{
