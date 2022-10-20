@@ -13,8 +13,7 @@ DMA_HandleTypeDef i2c_hdma_rx;
 
 /**
 * @brief Lancement communication DMA
-* @param  DevAddress Target device address: The device 7 bits address value
-*         in datasheet must be shifted to the left before calling the interface
+* @param  DevAddress Target device address: The device 7 bits address value in datasheet must be shifted to the left before calling the interface
 * @param  MemAddress Internal memory address
 * @param  MemAddSize Size of internal memory address
 * @param  pData Pointer to data buffer
@@ -139,7 +138,7 @@ int32_t I2C_Init(void)
 	hi2c.Init.OwnAddress1 = 0;	
 	hi2c.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
 	hi2c.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
-  hi2c.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+        hi2c.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
 	
 	if (HAL_I2C_Init(&hi2c) != HAL_OK) 
   {
@@ -159,16 +158,14 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* hi2c)
   if(hi2c->Instance==I2C4)
   {
   
-  __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();		
+  // DMA1 Clock Activation
+  __HAL_RCC_DMA2_CLK_ENABLE();
 		
-
-// DMA1 Clock Activation
-     __HAL_RCC_DMA2_CLK_ENABLE();
-		
-    /**I2C2 GPIO Configuration    
+  /**I2C2 GPIO Configuration    
     PB10     ------> I2C4_SCL
     PB11     ------> I2C4_SDA 
-    */
+  */
     GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_11;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_OD;
     GPIO_InitStruct.Pull = GPIO_PULLUP;
@@ -179,7 +176,7 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* hi2c)
     /* Peripheral clock enable */
     __HAL_RCC_I2C4_CLK_ENABLE();
 		
-		/* Configure the DMA handler for Reception process */
+    		/* Configure the DMA handler for Reception process */
 		i2c_hdma_rx.Instance                 = DMA2_Channel1;
 		i2c_hdma_rx.Init.Request             = DMA_REQUEST_0;
 		i2c_hdma_rx.Init.Direction           = DMA_PERIPH_TO_MEMORY;
