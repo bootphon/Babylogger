@@ -1,5 +1,6 @@
 /**********************
 * Team : Coml
+* Year : 2020-2021
 **********************/
 
 #include "Acquisition_Audio.h"
@@ -8,6 +9,7 @@
 /* Private functions -----------------------------------------------------*/
 
 /*Declaration variables --------------------------------------------------*/
+
 int32_t                      RecBuff0[2*BuffSize];
 int32_t                      RecBuff1[2*BuffSize];
 int32_t                      RecBuff2[2*BuffSize];
@@ -34,34 +36,34 @@ uint8_t*		     pWavHeader = &WavHeader[0];
 uint8_t			     RTC_Buff[7] = {0};
 
 
-/*Process variables --------------------------------------------------*/
+/*Process variables ----------------------------------------------------------*/
 
-
-	
 /* Externs variables ---------------------------------------------------------*/
 
+// debeug variables -----------------------------------------------------------/
 
+uint32_t hx1 = 0;
+uint32_t hx2 = 0;
+uint32_t hx3 = 0;
+uint32_t hx4 = 0;
+uint32_t hy  = 0;
 
-
-// debeug variables ---------------------------------------------------------/
-
-uint32_t hx1 												 = 0;
-uint32_t hx2 												 = 0;
-uint32_t hx3 												 = 0;
-uint32_t hx4 												 = 0;
-uint32_t hy												 = 0;
-
-uint32_t cx1												 = 0;
-uint32_t cx2												 = 0;
-uint32_t cx3												 = 0;
-uint32_t cx4												 = 0;
-uint32_t cy												 = 0;
+uint32_t cx1 = 0;
+uint32_t cx2 = 0;
+uint32_t cx3 = 0;
+uint32_t cx4 = 0;
+uint32_t cy  = 0;
 
 
 // special variable 
-uint32_t 										Buff_index; 
+uint32_t Buff_index; 
 
-
+/*******************************************************************************
+* Function Name  : 
+* Description    :
+* Input          : 
+* Return         : 
+*******************************************************************************/
 void Audio_Init(void)
 {
 	DFSDM_Init();
@@ -122,8 +124,7 @@ void DmaAudioRecHalfCallback (uint8_t Flt)
 			SvgrdBuff[Buff_index+3] 	= SaturaLH((RecBuff3[i] >> 8 ), -32768, 32767); 			
 			Buff_index +=4; 
 		}
-		
-		
+				
 		
 		if (Buff_index == ((16 * BuffSize)+8))
 		{
@@ -207,10 +208,6 @@ void DmaAudioRecCpltCallback (uint8_t Flt)
 	
 }
 
-
-
-
-
 void Audio_Set_Header(uint32_t Freq, uint8_t Resolution ,uint8_t NbrChannel)
 {
   uint32_t ByteRate = ( Freq * Resolution ) / 2;
@@ -289,6 +286,7 @@ void Audio_Set_Header(uint32_t Freq, uint8_t Resolution ,uint8_t NbrChannel)
   WavHeader[43]  = 0x00;
   
 }
+
 void Audio_Update_Header (uint32_t CntrBuff)
 {
   /* Write the file length ---------------------------------------------------*/
