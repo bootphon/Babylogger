@@ -1,3 +1,8 @@
+/**********************
+* Team : Coml
+* Year : 2020-2021
+**********************/
+
 #include "DFSDM.h"
 #include "PWR.h"
 
@@ -10,7 +15,6 @@ DFSDM_Channel_HandleTypeDef  DfsdmChannel1Handle;
 DFSDM_Channel_HandleTypeDef  DfsdmChannel2Handle;
 DFSDM_Channel_HandleTypeDef  DfsdmChannel3Handle;
 
-
 DFSDM_Filter_HandleTypeDef   DfsdmFilter0Handle;
 DFSDM_Filter_HandleTypeDef   DfsdmFilter1Handle;
 DFSDM_Filter_HandleTypeDef   DfsdmFilter2Handle;
@@ -21,13 +25,10 @@ DMA_HandleTypeDef            hDfsdmFLT1Dma;
 DMA_HandleTypeDef            hDfsdmFLT2Dma;
 DMA_HandleTypeDef            hDfsdmFLT3Dma;
 
-
-extern int32_t                      RecBuff0[2*BuffSize];
-extern int32_t                      RecBuff1[2*BuffSize];
-extern int32_t                      RecBuff2[2*BuffSize];
-extern int32_t                      RecBuff3[2*BuffSize];
-
-
+extern int32_t               RecBuff0[2*BuffSize];
+extern int32_t               RecBuff1[2*BuffSize];
+extern int32_t               RecBuff2[2*BuffSize];
+extern int32_t               RecBuff3[2*BuffSize];
 
 /*******************************************************************************
 * Function Name  : 
@@ -149,7 +150,6 @@ Fonctions a venir
 *******************************************************************************/
 void DFSDM_Init(void)
 {
-
 	
 	  /* Initialize channel 0 */
 	
