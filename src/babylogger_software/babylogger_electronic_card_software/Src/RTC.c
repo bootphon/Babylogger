@@ -42,11 +42,11 @@ void RTC_Set_time(uint8_t* Time_Buff)
     /* Initialization Error */
     //Error_Handler();
   }
-    HAL_RTCEx_BKUPWrite(&RtcHandle, RTC_BKP_DR1, 0x32F2);
+  HAL_RTCEx_BKUPWrite(&RtcHandle, RTC_BKP_DR1, 0x32F2);
 }
 void RTC_Set_date(uint8_t* Date_Buff)
 {
-    RTC_DateTypeDef sdatestructure;
+  RTC_DateTypeDef sdatestructure;
 	
   /*##-1- Configure the Date #################################################*/
 
