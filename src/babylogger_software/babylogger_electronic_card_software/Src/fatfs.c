@@ -25,16 +25,16 @@
 uint8_t retSD;    /* Return value for SD */
 char SDPath[4];   /* SD logical drive path */
 FATFS SDFatFS;    /* File system object for SD logical drive */
-FATFS SDFatFS1;		/* File system object for audio partition SD logical drive */
-FATFS SDFatFS2;		/* File system object for acti  partition SD logical drive */
+FATFS SDFatFS1;	  /* File system object for audio partition SD logical drive */
+FATFS SDFatFS2;	  /* File system object for acti  partition SD logical drive */
 FIL SDFile;       /* File object for Context File */
-FIL Audio_File_1;		/* File object for Audio file */
-FIL Audio_File_2;		/* File object for Audio file */
-FIL	Acti_File; 		/* File object for Motion file */
+FIL Audio_File_1; /* File object for Audio file */
+FIL Audio_File_2; /* File object for Audio file */
+FIL	Acti_File; /* File object for Motion file */
 
 /* Private FatFs variable ------------------------------------------------------*/
 
-DWORD Clust_free 			= 0; 
+DWORD Clust_free 		= 0; 
 WORD 	cluster_size 		= 0;
 WORD 	Sector_size 		= 0;
 DWORD Size_free_SD 		= 0;
@@ -62,8 +62,8 @@ static void Set_Acti_Cust_Header(uint8_t* CustHeader );
 
 /* Buffer custom header --------------------------------------------------------*/
 
-uint8_t My_Buff_Cust_Header[84] 			= {0};
-uint8_t My_Buff_Acti_Cust_Header[72] 	= {0};
+uint8_t My_Buff_Cust_Header[84] = {0};
+uint8_t My_Buff_Acti_Cust_Header[72] = {0};
 
 /* Flags -----------------------------------------------------------------------*/
 
@@ -74,15 +74,15 @@ uint8_t										Wait_Close_Rqst = 0;
 /* File state */ 
 uint8_t 									Audio_File_1_State = 0;
 uint8_t 									Audio_File_2_State = 0;
-uint8_t										Actim_File_State	 = 0;
+uint8_t										Actim_File_State   = 0;
 uint8_t										Swap_file_state    = 0;
 uint8_t 									Swap_Timeout_State = 0;
 
 /* Buffer State */
 uint8_t 									HalfCryptSvgrdBuffCplt  = 0;
 uint8_t 									CryptSvgrdBuffCplt      = 0;
-uint8_t 									HalfActiSvgrdBuffCplt		= 0;
-uint8_t										ActiSvgrdBuffCplt				= 0;
+uint8_t 									HalfActiSvgrdBuffCplt   = 0;
+uint8_t										ActiSvgrdBuffCplt	= 0;
 
 /* Structure -------------------------------------------------------------------*/
 
@@ -99,57 +99,57 @@ FIL *pAudio_Old_File;
 extern int16_t*             pCryptSvgrdHalfBuff;
 extern int16_t*             pCryptSvgrdCpltBuff;
 
-extern int16_t*			  			pAccGyrBuff_Half;
-extern int16_t*			  			pAccGyrBuff_Cplt;
+extern int16_t*		    pAccGyrBuff_Half;
+extern int16_t*		    pAccGyrBuff_Cplt;
 
-extern uint8_t*							pWavHeader;
+extern uint8_t*		    pWavHeader;
 
 /* Time & Date buffer (RTC) ---------------------------------------------------*/
 
-uint8_t											Rtc_Date_Start[3] 			= {0};
-uint8_t											Rtc_Acti_Date_Start[3] 	= {0};
+uint8_t			    Rtc_Date_Start[3] 		= {0};
+uint8_t			    Rtc_Acti_Date_Start[3] 	= {0};
 
-uint8_t 										Rtc_Time_Start[4] 			= {0};
-uint8_t 										Rtc_Acti_Time_Start[4] 	= {0};
+uint8_t 		    Rtc_Time_Start[4] 		= {0};
+uint8_t 		    Rtc_Acti_Time_Start[4] 	= {0};
 
-uint8_t 										Rtc_Time_End[4] 				= {0};
-uint8_t 										Rtc_Acti_Time_End[4] 		= {0};
+uint8_t 		    Rtc_Time_End[4] 		= {0};
+uint8_t 		    Rtc_Acti_Time_End[4] 	= {0};
 
-extern uint8_t							RTC_Buff[7];
+extern uint8_t		    RTC_Buff[7];
 
 /* variables of debeug  -------------------------------------------------------*/
 
-uint32_t										 CounterBuff 					= 0;
-uint32_t 										 Acti_CounterBuff 		= 0;
+uint32_t		   CounterBuff 		         = 0;
+uint32_t 		   Acti_CounterBuff 		 = 0;
 
 /* File name buffer -----------------------------------------------------------*/
 
-uint8_t											 WavFileName[14]			={0};
-uint8_t											 ActFileName[14]      ={0};
+uint8_t			WavFileName[14]			= {0};
+uint8_t			ActFileName[14]                 = {0};
 
 /* File process request -------------------------------------------------------*/
 
-uint8_t											 OpenFileRqst					= 0; 
-uint8_t											 CloseFileRqst				= 0; 
-uint8_t											 ForceCloseFileRqst		= 0;
+uint8_t			OpenFileRqst			= 0; 
+uint8_t		        CloseFileRqst			= 0; 
+uint8_t			ForceCloseFileRqst		= 0;
 
-uint8_t 										 OpenActiFileRqst			= 0;
-uint8_t 										 CloseActiFileRqst		= 0;
+uint8_t 		OpenActiFileRqst		= 0;
+uint8_t 		CloseActiFileRqst		= 0;
 											 
 /* Output management variables ------------------------------------------------*/
 
-extern uint16_t 						 BL_Serial_Number;
+extern uint16_t 	 BL_Serial_Number;
 
-uint32_t 										 Audio_Rec_Number = 0;
-uint32_t 										 Actim_Fil_Number = 0;
+uint32_t 		 Audio_Rec_Number = 0;
+uint32_t 		 Actim_Fil_Number = 0;
 
 /* Systick time variables -----------------------------------------------------*/
 
-uint32_t 										 Time_start				= 0; 
-uint32_t 										 Time_end					= 0xFFFFFFFF; 
+uint32_t 		Time_start		= 0; 
+uint32_t 		Time_end		= 0xFFFFFFFF; 
 
-uint32_t 										 Time_Acti_start	= 0; 
-uint32_t 										 Time_Acti_end		= 0xFFFFFFFF; 
+uint32_t 		Time_Acti_start		= 0; 
+uint32_t 		Time_Acti_end		= 0xFFFFFFFF; 
 
 
 /*******************************************************************************
@@ -397,8 +397,7 @@ uint8_t FATFS_SD_Enough_Space (uint32_t Free_Space)
 		if( Size_free_SD < (Free_Space * 1000000) )		/* Compare the free space to the threshold */ 
 		{	
 			return 1; 
-		}
-		
+		}		
 		else 
 		{
 			return 0;
@@ -450,8 +449,7 @@ uint8_t FATFS_Format_uSD (void)
 
 /*******************************************************************************
 * Function Name  : FATFS_DeInit 
-* Description    : Save context of working, deinitialize the file system 
-									 and disable HW access to the sd card.
+* Description    : Save context of working, deinitialize the file system and disable HW access to the sd card.
 * Input          : No input. 
 * Return         : No return value.
 *******************************************************************************/
@@ -478,23 +476,23 @@ static void FATFS_Error_Handel(void)
 	#endif
 	
 	Audio_Stop_Record();		/* Stop audio acquisition */
-	Sensors_Stop();		/* Stop sensors acquisition */
+	Sensors_Stop();			/* Stop sensors acquisition */
 	
-	//IHM_Debug_Led(12); // test de proto
+	//IHM_Debug_Led(12); 		// test de proto
 	
-	f_mount(NULL, "0:/", 0);		/* unmount the audio partition */
-	f_mount(NULL, "1:/", 0);		/* unmount the motion partition */
+	f_mount(NULL, "0:/", 0);	/* unmount the audio partition */
+	f_mount(NULL, "1:/", 0);	/* unmount the motion partition */
 	FATFS_UnLinkDriver("0:/");	/* unlink the diskio for audio partition */
 	FATFS_UnLinkDriver("1:/");	/* unlink the diskio for motion partition */																																																				// ajouter fonction pour reset sdmmc
 	
 	#ifdef USE_LOG_FILE 
 	/* Link driver for audio and motion partitions*/
-  retSD = FATFS_LinkDriver(&SD_Driver, SDPath);
+  	retSD = FATFS_LinkDriver(&SD_Driver, SDPath);
 	retSD = FATFS_LinkDriver(&SD_Driver, SDPath);
 	
 	/* Mount logical disk for partitions */
 	if(f_mount(&SDFatFS1,"0:/", 1) != FR_OK)		/* Mount audio partition*/
-  {
+  	{
 		/* Error management */
 		PWR_Go_To_Shutdown_Mode();		/* Reset the device */
 	}
@@ -615,7 +613,7 @@ void Restor_Context (void)
 	if(f_open(&SDFile,"1:/Context.txt",  FA_READ) != FR_OK)		/* Open context file in read only mode */ 
 	{
 		/* If the file does not exist, initialize the indexes. 
-			 The file does not exist in the case of data were transferd to the baby dock, it means the begening of a new acquisition sequence*/
+		   The file does not exist in the case of data were transferd to the baby dock, it means the begening of a new acquisition sequence*/
 		Audio_Rec_Number = 0;	/* Initialize audio file index */
 		Actim_Fil_Number = 0;	/* Initialize motion file index */
 	}
@@ -1349,7 +1347,7 @@ void Swap_File_Process (void)
 		break;
 		
 		case Swap_file_state_New_file_rqst:
-			/* called from run mode state X miliseconde before pre-set timeout to prépare next file*/
+			/* called from run mode state X miliseconde before pre-set timeout to prÃ©pare next file*/
 			
 			/* Update the pointer of the file to open */
 		if (pAudio_File == &Audio_File_1)

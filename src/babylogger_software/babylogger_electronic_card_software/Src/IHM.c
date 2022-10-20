@@ -14,7 +14,7 @@ extern uint8_t Global_App_State;
 
 // variable de debug
 uint32_t var_test_exti_reset 	=	0;
-uint32_t var_test_exti_set 		=	0;
+uint32_t var_test_exti_set 	=	0;
 uint32_t var_test_exti_sysoff =	0;
 // fonctions defenition
 
@@ -505,7 +505,7 @@ void IHM_LED_Stop_Blink(uint8_t val){
 
 /**
 * @brief Initialization du Timer en mode PWM
-* Fréquence de clignotement fixée à 1 seconde / duty cycle 50%
+* FrÃ©quence de clignotement fixÃ©e Ã  1 seconde / duty cycle 50%
 * @param None
 * @retval None
 */
@@ -782,7 +782,7 @@ uint32_t IHM_PB_GetState(void)
 
 void IHM_PB_Callback (void)
 {
-		// sur carte nucléo appuie PB = GND, sur notre carte appuie PB = 3V3 ==> logique inverse
+		// sur carte nuclÃ©o appuie PB = GND, sur notre carte appuie PB = 3V3 ==> logique inverse
    // NORMALEMENT OK!!!! while(BSP_PB_GetState(BUTTON_USER) == GPIO_PIN_RESET){}
 
 		

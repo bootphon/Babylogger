@@ -52,12 +52,12 @@ do {\
 
 /* Private variables*/
 
-uint8_t Factory_Mode 						= 0;
+uint8_t Factory_Mode 			= 0;
 
 uint8_t End_Serial_Number_Rx		= 0;
-uint8_t End_Key_Rx							= 0;
-uint8_t End_Time_Rx							= 0;
-uint8_t End_Date_Rx							= 0;
+uint8_t End_Key_Rx			= 0;
+uint8_t End_Time_Rx			= 0;
+uint8_t End_Date_Rx			= 0;
 
 /* Babylogger service & caracteristics handel*/
 

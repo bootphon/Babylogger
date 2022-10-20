@@ -66,8 +66,8 @@
 
 
 extern volatile uint8_t set_connectable;
-extern volatile int     connected;
-uint8_t 								BLE_Discovrable = 0;
+extern volatile int connected;
+uint8_t BLE_Discovrable = 0;
 
 /* at startup, suppose the X-NUCLEO-IDB04A1 is used */
 uint8_t bnrg_expansion_board = IDB04A1; 

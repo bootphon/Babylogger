@@ -23,9 +23,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "RTE_Components.h"
-
 #include "hci_tl.h"
-
 #define HEADER_SIZE       5U
 #define MAX_BUFFER_SIZE   255U
 #define TIMEOUT_DURATION  15U
@@ -71,7 +69,7 @@ int32_t HCI_TL_SPI_Init(void* pConf)
 
 /**
  * @brief  DeInitializes the peripherals communication with the BlueNRG
- *         Expansion Board (via SPI, I2C, USART, ...)
+ *  Expansion Board (via SPI, I2C, USART, ...)
  *
  * @param  None
  * @retval int32_t 0

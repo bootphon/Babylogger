@@ -25,7 +25,6 @@
 
 /* USER CODE END Includes */
 
-
 /* Private typedef -----------------------------------------------------------*/
 
 void HAL_MspInit(void)
@@ -43,9 +42,6 @@ void HAL_MspInit(void)
 
   /* USER CODE END MspInit 1 */
 }
-
-
-
 
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/

@@ -1,12 +1,7 @@
 #include "DFSDM.h"
 #include "PWR.h"
 
-
-
-
 /* Private functions ---------------------------------------------------------*/
-
-
 
 /* Private variables ---------------------------------------------------------*/
 
@@ -34,7 +29,12 @@ extern int32_t                      RecBuff3[2*BuffSize];
 
 
 
-
+/*******************************************************************************
+* Function Name  : 
+* Description    : 
+* Input          : 
+* Return         : 
+*******************************************************************************/
 void DFSDM_Start_Record (void)
 {
 	if(HAL_OK != HAL_DFSDM_FilterRegularStart_DMA(&DfsdmFilter0Handle, &RecBuff0[0], 2*BuffSize))
@@ -54,6 +54,12 @@ void DFSDM_Start_Record (void)
 		PWR_Reset_System();
 	}
 }
+/*******************************************************************************
+* Function Name  : 
+* Description    : 
+* Input          : 
+* Return         : 
+*******************************************************************************/
 void DFSDM_Stop_Record (void)
 {
 	if(HAL_OK != HAL_DFSDM_FilterRegularStop_DMA(&DfsdmFilter0Handle))
@@ -83,7 +89,12 @@ __weak void DmaAudioRecCpltCallback (uint8_t Flt)
 {
 	
 }
-
+/*******************************************************************************
+* Function Name  : 
+* Description    : 
+* Input          : 
+* Return         : 
+*******************************************************************************/
 
 void HAL_DFSDM_FilterRegConvHalfCpltCallback(DFSDM_Filter_HandleTypeDef *hdfsdm_filter)
 {	
@@ -127,9 +138,15 @@ void HAL_DFSDM_FilterRegConvCpltCallback(DFSDM_Filter_HandleTypeDef *hdfsdm_filt
 
 /*
 
-								Fonctions a venir
+Fonctions a venir
 			
 */
+/*******************************************************************************
+* Function Name  : 
+* Description    : 
+* Input          : 
+* Return         : 
+*******************************************************************************/
 void DFSDM_Init(void)
 {
 
@@ -222,10 +239,7 @@ void DFSDM_Init(void)
 		PWR_Reset_System();
   }
 	
-	
-	
-	
-	
+		
 	
   /* Initialize filter 0 */
   __HAL_DFSDM_FILTER_RESET_HANDLE_STATE(&DfsdmFilter0Handle);

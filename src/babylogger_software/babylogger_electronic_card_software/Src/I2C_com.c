@@ -4,7 +4,12 @@
 
 I2C_HandleTypeDef hi2c;
 DMA_HandleTypeDef i2c_hdma_rx;
-
+/*******************************************************************************
+* Function Name  : 
+* Description    : 
+* Input          : 
+* Return         : 
+*******************************************************************************/
 
 /**
 * @brief Lancement communication DMA
@@ -119,8 +124,6 @@ int32_t  I2C_ReadReg(uint16_t DevAddr, uint16_t Reg, uint8_t *pData, uint16_t Le
 
 
 
-
-
 /**
 * @brief Initialization du bus I2C2
 * @param None
@@ -156,11 +159,11 @@ void HAL_I2C_MspInit(I2C_HandleTypeDef* hi2c)
   if(hi2c->Instance==I2C4)
   {
   
-    __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 		
 
-		// DMA1 Clock Activation
-		__HAL_RCC_DMA2_CLK_ENABLE();
+// DMA1 Clock Activation
+     __HAL_RCC_DMA2_CLK_ENABLE();
 		
     /**I2C2 GPIO Configuration    
     PB10     ------> I2C4_SCL

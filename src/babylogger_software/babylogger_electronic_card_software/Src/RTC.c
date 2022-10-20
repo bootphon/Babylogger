@@ -1,14 +1,10 @@
 #include "RTC.h"
-
-
-
 #include "string.h"
 #include "stdio.h"
-
 #include "stdlib.h"
 
 
-
+/* priavte var*/
 uint8_t aShowTime[50] = {0};
 uint8_t aShowDate[50] = {0};
 
@@ -27,9 +23,9 @@ void BLE_Date_Recieved(uint8_t* pData)
 
 void RTC_Set_time(uint8_t* Time_Buff)
 {
-	RTC_TimeTypeDef stimestructure;
-	
-	stimestructure.Hours =  Time_Buff[0];
+ 
+  RTC_TimeTypeDef stimestructure;
+  stimestructure.Hours =  Time_Buff[0];
   stimestructure.Minutes = Time_Buff[1];
   stimestructure.Seconds = (Time_Buff[2]+1);
   stimestructure.TimeFormat = RTC_HOURFORMAT12_AM;
@@ -45,9 +41,9 @@ void RTC_Set_time(uint8_t* Time_Buff)
 }
 void RTC_Set_date(uint8_t* Date_Buff)
 {
-		RTC_DateTypeDef sdatestructure;
+  RTC_DateTypeDef sdatestructure;
 	
-	/*##-1- Configure the Date #################################################*/
+  /*##-1- Configure the Date #################################################*/
 
   sdatestructure.Year = Date_Buff[0];
   sdatestructure.Month = Date_Buff[1];
@@ -105,7 +101,6 @@ void RTC_Set_Time_str(uint8_t* time_str)
 	stimestructure.Seconds  = atoi(Tmp);
 	
   
-  
   stimestructure.TimeFormat = RTC_HOURFORMAT_24;
   stimestructure.DayLightSaving = RTC_DAYLIGHTSAVING_NONE ;
   stimestructure.StoreOperation = RTC_STOREOPERATION_RESET;
@@ -121,7 +116,8 @@ void RTC_Set_Time_str(uint8_t* time_str)
 void RTC_Init(void)
 {
 	
-	  /*##-1- Configure the RTC peripheral #######################################*/
+  
+  /*##-1- Configure the RTC peripheral #######################################*/
   /* Configure RTC prescaler and RTC data registers */
   /* RTC configured as follows:
       - Hour Format    = Format 24
@@ -167,9 +163,7 @@ void RTC_Init(void)
     }
     /* Clear source Reset Flag */
     __HAL_RCC_CLEAR_RESET_FLAGS();
-  }
-
-	
+  }	
 }
 
 
@@ -238,7 +232,12 @@ void RTC_CalendarShow(uint8_t *showtime, uint8_t *showdate)
 
 
 
-
+/*******************************************************************************
+* Function Name  : 
+* Description    : 
+* Input          : 
+* Return         : 
+*******************************************************************************/
 
 /**
   * @brief RTC MSP Initialization 

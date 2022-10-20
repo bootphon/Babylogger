@@ -9,14 +9,13 @@
 
 /* Private variables ---------------------------------------------------------*/
 
-float 					temperature;  /* The value of the temperature in °C */ 
+float temperature;  /* The value of the temperature in Â°C */ 
 
 
 
 /*******************************************************************************
 * Function Name  : Temp_Hum_Init_Check_Temperature
-* Description    : Function called at startup to know if the temperature of the 
-									 device allow it to be used. 
+* Description    : Function called at startup to know if the temperature of the device allow it to be used. 
 * Input          : No input
 * Return         : Return 1 if the temperature exceeds the allowed value, else 0. 
 *******************************************************************************/
@@ -74,7 +73,7 @@ __weak void Temp_Hum_Overheating_Devive(void)
 void Temp_Hum_Stop(void)
 {
 	HTS221_ENV_SENSOR_Disable(ENV_TEMPERATURE); /* Disable temperature sensing */
-	HTS221_ENV_SENSOR_Disable(ENV_HUMIDITY); 		/* Disable humidity sensing */
+	HTS221_ENV_SENSOR_Disable(ENV_HUMIDITY);    /* Disable humidity sensing */
 }
 
 /*******************************************************************************
@@ -86,7 +85,7 @@ void Temp_Hum_Stop(void)
 void Temp_Hum_Start(void)
 {
 	HTS221_ENV_SENSOR_Enable(ENV_TEMPERATURE); /* Enable temperature sensing */
-	HTS221_ENV_SENSOR_Enable(ENV_HUMIDITY);		 /* Enable humidity sensing */
+	HTS221_ENV_SENSOR_Enable(ENV_HUMIDITY);	   /* Enable humidity sensing */
 }
 
 /*******************************************************************************
